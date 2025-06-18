@@ -13,8 +13,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 const companies = [
   'Tespa',
+  'Inprocess Gauging',
   'Sylvac',
   'Mahr',
+  'SCANTECH 3D'
 ]
 
 const categories = [

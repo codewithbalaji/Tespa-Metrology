@@ -131,7 +131,9 @@ const Products = () => {
     { label: 'All Companies', value: '' },
     { label: 'Sylvac', value: 'Sylvac' },
     { label: 'Mahr', value: 'Mahr' },
-    { label: 'Tespa', value: 'Tespa' }
+    { label: 'Tespa', value: 'Tespa' },
+    { label: 'Inprocess Gauging', value: 'Inprocess Gauging' },
+    { label: 'SCANTECH 3D', value: 'SCANTECH 3D' }
   ];
 
   const handleCompanyChange = (company: string) => {

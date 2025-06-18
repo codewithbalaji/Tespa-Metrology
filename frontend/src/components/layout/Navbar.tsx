@@ -9,8 +9,10 @@ import AuthModal from '../auth/AuthModal';
 // Define available companies
 const companies = [
   'Tespa',
+  'Inprocess Gauging',
   'Sylvac',
-  'Mahr'
+  'Mahr',
+  'SCANTECH 3D'
 ];
 
 const Navbar = () => {
@@ -75,9 +77,12 @@ const Navbar = () => {
     { 
       name: 'Products',
       items: [
+
         { name: 'TESPA Products', href: '/products?company=Tespa', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/e_background_removal/f_png/v1740752141/tespa_logo_fvfey9.jpg', description: 'Precision measurement tools and gauges' },
+        { name: 'Inprocess Gauging', href: '/products?company=Inprocess Gauging', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/e_background_removal/f_png/v1740752141/tespa_logo_fvfey9.jpg', description: 'Tespa Inprocess gauges' },
         { name: 'Sylvac Products', href: '/products?company=Sylvac', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707087/logo-sylvac-metrology-hd_bmtjbl.png', description: 'Digital measuring instruments' },
-        { name: 'Mahr Products', href: '/products?company=Mahr', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707108/logo-mahr_ymbv9o.svg', description: 'High-precision metrology solutions' }
+        { name: 'Mahr Products', href: '/products?company=Mahr', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707108/logo-mahr_ymbv9o.svg', description: 'High-precision metrology solutions' },
+        { name: 'SCANTECH 3D Products', href: '/products?company=SCANTECH 3D', icon: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750227673/64b8eeb682905d8754062b5be955e4a6_dnlutf.webp', description: 'Highly precise SCANTECH 3D scanners' }
       ],
       isDropdown: true,
       id: 'products'

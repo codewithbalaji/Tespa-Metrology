@@ -171,10 +171,10 @@ const Footer = () => {
             </Link>
             
             {/* Add Google Translate */}
-            <div className="mt-4 pt-4 border-t border-gray-800">
+            {/* <div className="mt-4 pt-4 border-t border-gray-800">
               <p className="text-sm text-gray-400 mb-2">Select Language</p>
               <div id="google_translate_element" className="google-translate-footer"></div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 

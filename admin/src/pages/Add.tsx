@@ -17,9 +17,11 @@ interface AddProps {
 
 // Available options for dropdowns
 const companies = [
-  'Tespa', 
+  'Tespa',
+  'Inprocess Gauging', 
   'Sylvac', 
   'Mahr', 
+  'SCANTECH 3D'
 ];
 
 const categories = [
