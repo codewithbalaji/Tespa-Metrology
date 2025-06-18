@@ -140,27 +140,27 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">CONTACT US</h3>
-            <p className="font-semibold">M/S. TESPA TOOLS PVT LTD</p>
+            <p className="font-semibold">TESPA METROLOGY</p>
             <p className="text-sm text-gray-400">(A GROUP COMPANY OF TESPA)</p>
             
             <div className="flex items-start mt-4">
               <MapPin size={16} className="mr-2 text-[#27a3d4] mt-1 flex-shrink-0" />
               <p className="text-sm text-gray-300">
-                No.123, Industrial Area, Chennai - 600001, Tamil Nadu, India
+                D-105, 1st Main Road, D Block, Anna Nagar East, Chennai - 600102, Tamil Nadu, India
               </p>
             </div>
             
             <div className="flex items-center">
               <Phone size={16} className="mr-2 text-[#27a3d4] flex-shrink-0" />
               <p className="text-sm text-gray-300">
-                +91 9842 9430 / +91 9443 76392
+                +91 944 500 8731 / +91 944 528 2765
               </p>
             </div>
             
             <div className="flex items-center">
               <Mail size={16} className="mr-2 text-[#27a3d4] flex-shrink-0" />
               <p className="text-sm text-gray-300">
-                sales@tespatools.com
+                sales@tespametrology.com
               </p>
             </div>
             

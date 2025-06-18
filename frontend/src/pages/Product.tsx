@@ -102,7 +102,7 @@ const Product = () => {
         <title>{productData.name} | Tespa Metrology</title>
         <meta
           name="description"
-          content={productData.description || `${productData.name} (${productData.model}) is a ${productData.category} product from Tespa Metrology. ${productData.features && productData.features.length > 0 ? "Key features: " + productData.features.slice(0, 2).join(", ") + "." : ""}`}
+          content={productData.description}
         />
         <link
           rel="canonical"
