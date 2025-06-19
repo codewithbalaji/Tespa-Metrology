@@ -39,6 +39,7 @@ interface Product {
   accuracy?: string;
   software?: string;
   slug: string;
+  company?: string;
 }
 
 const publicUrl = import.meta.env.VITE_PUBLIC_URL;
@@ -414,6 +415,7 @@ const Product = () => {
             <RelatedProducts
               category={productData.category}
               subCategory={productData.subCategory}
+              company={productData.company}
             />
           </div>
         </div>

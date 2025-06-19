@@ -17,16 +17,6 @@ const Index = () => {
         <title>Home | Tespa Metrology</title>
         <meta name="description" content="Tespa Metrology is a leader in precision measurement solutions, offering advanced metrology tools, calibration, and industrial services since 1983." />
         <link rel="canonical" href={publicUrl + '/'} />
-        <meta property="og:title" content="Page Title | Tespa Metrology" />
-        <meta property="og:description" content="Tespa Metrology is a leader in precision measurement solutions..." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={publicUrl + '/og-image.jpg'} />
-        <meta property="og:image" content={publicUrl + '/og-image.jpg'} />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Page Title | Tespa Metrology" />
-        <meta name="twitter:description" content="..." />
-        <meta name="twitter:image" content={publicUrl + '/og-image.jpg'} />
       </Helmet>
       <motion.div
         className="flex flex-col min-h-screen"

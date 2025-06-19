@@ -20,7 +20,7 @@ const companies = [
 ]
 
 const categories = [
-  'Heights Gauge',
+  'Height Gauge',
   'Video Measuring Machine',
   'Coordinate Measuring Machine',
   'Others'

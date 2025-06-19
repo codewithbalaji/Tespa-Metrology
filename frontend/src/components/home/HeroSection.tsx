@@ -10,17 +10,17 @@ const HeroSection = () => {
 
   const heroImages = [
     {
-      url: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741708198/0I5A4902_ymfoty.jpg',
+      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4902_ymfoty-min_xc5nnp.webp',
       title: 'Precision Metrology',
       subtitle: 'Advanced measurement solutions for quality control'
     },
     {
-      url: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707906/0I5A4896_ui7syb.jpg',
+      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4896_ui7syb-min_y7t9o7.webp',
       title: 'Coordinate Measuring',
       subtitle: 'High-accuracy dimensional inspection systems'
     },
     {
-      url: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707693/0I5A4859_n08oev.jpg',
+      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4859_n08oev-min_vqo8tz.webp',
       title: 'Industrial Quality',
       subtitle: 'Comprehensive inspection tools for manufacturing'
     }

@@ -3,7 +3,7 @@ import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
 import ProductItem from './ProductItem';
 
-const RelatedProducts = ({category, subCategory}) => {
+const RelatedProducts = ({category, subCategory, company}) => {
   
     
     const {products} = useContext(ShopContext);
@@ -13,12 +13,21 @@ const RelatedProducts = ({category, subCategory}) => {
         if(products.length > 0){
             let productsCopy = products.slice();
 
+            // Filter by category
             productsCopy = productsCopy.filter((item) => category === item.category);
-            productsCopy = productsCopy.filter((item) => subCategory === item.subCategory);
+            
+            // Filter by company if provided
+            if (company) {
+                productsCopy = productsCopy.filter((item) => company === item.company);
+            }
+            // Otherwise filter by subcategory as before
+            else if (subCategory) {
+                productsCopy = productsCopy.filter((item) => subCategory === item.subCategory);
+            }
 
-            setRelated(productsCopy.slice(1, 6));
+            setRelated(productsCopy.slice(0, 5));
         }
-    }, [products])
+    }, [products, category, subCategory, company])
 
     return (
     <div className='my-24'>

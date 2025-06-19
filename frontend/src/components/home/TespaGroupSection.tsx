@@ -38,7 +38,7 @@ const TespaGroupSection = () => {
 
   const stats = [
     { value: 40, label: "Years Experience", delay: 0.3, stateKey: 'years' },
-    { value: 1000, label: "Satisfied Clients", delay: 0.4, stateKey: 'clients' },
+    { value: 5000, label: "Satisfied Clients", delay: 0.4, stateKey: 'clients' },
     { value: 5, label: "Locations", delay: 0.5, stateKey: 'locations' },
     { value: 10000, label: "Products Delivered", delay: 0.6, stateKey: 'products' }
   ];
@@ -123,7 +123,7 @@ const TespaGroupSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">TESPA GROUP OF COMPANIES</h2>
           <div className="w-24 h-1 bg-[#27a3d4] mx-auto mb-6"></div>
           <p className="text-gray-600 md:text-lg leading-relaxed">
-            TECHNOCRAT ENGINEERED SPECIAL PRODUCTION AID Known by its Brand Name TESPA is established and promoted by Technocrat Mr. K.S. Shetty, Graduate Engineer of College of Engg., Guindy will serve as an One Stop Shop for all your Metrological Requirements.
+          TESPA Group of Companies, established in 1983, pioneers precision with innovation. We deliver excellence across metrology, robotics, and automation—empowering industries with trusted solutions and decades of engineering expertise.
           </p>
         </motion.div>
 

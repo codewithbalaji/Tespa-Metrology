@@ -10,8 +10,8 @@ const Footer = () => {
     { name: 'About Us', href: '/about' },
     { name: 'Products', href: '/products' },
     { name: 'Services', href: '/calibration' },
-    { name: 'Clients', href: '#clients' },
-    { name: 'Careers', href: '#careers' },
+    { name: 'Clients', href: '/clients' },
+    { name: 'Careers', href: '/careers' },
     { name: 'Contact Us', href: '/contact' },
   ];
 
@@ -67,21 +67,19 @@ const Footer = () => {
           >
             <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">ABOUT US</h3>
             <p className="text-gray-300 text-sm">
-            Welcome to TESPA METROLOGY — your trusted partner in precision since 1983. As leading manufacturers, importers, and distributors of metrology instruments, we are committed to delivering accuracy, innovation, and reliability. Explore our wide range of precision tools built to meet diverse industrial demands. With decades of expertise and a forward-looking vision, Tespa continues to evolve—expanding beyond metrology to serve clients with excellence across every endeavor.
+            Your trusted partner in precision since 1983. As leading manufacturers, importers, and distributors of metrology instruments, we are committed to delivering accuracy, innovation, and reliability. Explore our wide range of precision tools built to meet diverse industrial demands. With decades of expertise and a forward-looking vision, Tespa continues to evolve—expanding beyond metrology to serve clients with excellence across every endeavor.
             </p>
             <div className="flex space-x-4 pt-2">
+            <a href="https://www.linkedin.com/company/tespa-tools-pvt-ltd" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <Linkedin size={20} />
+              </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
                 <Facebook size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                <Linkedin size={20} />
-              </a>
+             
             </div>
           </motion.div>
 
@@ -122,7 +120,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">QR CODE</h3>
             <div className="bg-white p-2 rounded-lg w-32 h-32">
               <img 
-                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tespatools.com" 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tespametrology.com" 
                 alt="TESPA METROLOGY QR Code" 
                 className="w-full h-full"
               />
@@ -152,16 +150,16 @@ const Footer = () => {
             
             <div className="flex items-center">
               <Phone size={16} className="mr-2 text-[#27a3d4] flex-shrink-0" />
-              <p className="text-sm text-gray-300">
+              <a href="tel:+919445008731" className="text-sm text-gray-300 hover:text-white hover:underline">
                 +91 944 500 8731 / +91 944 528 2765
-              </p>
+              </a>
             </div>
             
             <div className="flex items-center">
               <Mail size={16} className="mr-2 text-[#27a3d4] flex-shrink-0" />
-              <p className="text-sm text-gray-300">
+              <a href="mailto:sales@tespametrology.com" className="text-sm text-gray-300 hover:text-white hover:underline">
                 sales@tespametrology.com
-              </p>
+              </a>
             </div>
             
             <Link to="/contact">

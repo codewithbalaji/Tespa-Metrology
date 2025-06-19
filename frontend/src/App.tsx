@@ -21,6 +21,7 @@ import Testimonial from "./pages/Testimonial";
 import News from "./pages/News";
 import Chatbot from "./components/Chatbot";
 import { HelmetProvider } from 'react-helmet-async'
+import ScrollToTop from "./components/ScrollToTop.";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
+        <ScrollToTop />
           <ShopContextProvider>
             <ToastContainer position="bottom-right" />
             <Routes>

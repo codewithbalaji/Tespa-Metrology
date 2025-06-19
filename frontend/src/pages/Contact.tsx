@@ -181,7 +181,7 @@ const Contact = () => {
                       <Phone className="text-[#27a3d4] mr-3 h-5 w-5 mt-1" />
                       <div>
                         <h3 className="font-semibold text-gray-800">Phone</h3>
-                        <p className="text-gray-600">{locations[0].phone}</p>
+                        <a href={`tel:${locations[0].phone.split(',')[0].trim()}`} className="text-gray-600 hover:text-[#27a3d4] hover:underline">{locations[0].phone}</a>
                       </div>
                     </div>
                     
@@ -189,7 +189,7 @@ const Contact = () => {
                       <Mail className="text-[#27a3d4] mr-3 h-5 w-5 mt-1" />
                       <div>
                         <h3 className="font-semibold text-gray-800">Email</h3>
-                        <p className="text-gray-600">{locations[0].email}</p>
+                        <a href={`mailto:${locations[0].email}`} className="text-gray-600 hover:text-[#27a3d4] hover:underline">{locations[0].email}</a>
                       </div>
                     </div>
                     
@@ -295,7 +295,12 @@ const Contact = () => {
                           <Phone className="text-[#27a3d4] mr-3 h-5 w-5 mt-1" />
                           <div>
                             <h4 className="font-semibold text-gray-800">Phone</h4>
-                            <p className="text-gray-600">{activeLocationData.phone}</p>
+                            <a 
+                              href={`tel:${activeLocationData.phone.split(',')[0].trim()}`} 
+                              className="text-gray-600 hover:text-[#27a3d4] hover:underline"
+                            >
+                              {activeLocationData.phone}
+                            </a>
                           </div>
                         </div>
                         

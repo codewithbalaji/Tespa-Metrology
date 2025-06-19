@@ -34,7 +34,7 @@ export const BasicProductInfo = ({ register, errors }: BasicProductInfoProps) =>
         <div>
           <p className='mb-2'>Product Category</p>
           <select {...register('category')} className='w-full px-3 py-2'>
-            <option value="Heights Gauge">Heights Gauge</option>
+            <option value="Height Gauge">Height Gauge</option>
             <option value="Video Measuring Machine">Video Measuring Machine</option>
             <option value="Coordinate Measuring Machine">Coordinate Measuring Machine</option>
             <option value="Others">Others</option>

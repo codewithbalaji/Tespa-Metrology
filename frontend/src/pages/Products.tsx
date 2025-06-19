@@ -148,7 +148,7 @@ const Products = () => {
   
   // Define Tespa subcategories
   const tespaSubcategories = [
-    'Heights Gauge',
+    'Height Gauge',
     'Video Measuring Machine',
     'Coordinate Measuring Machine'
   ];
@@ -171,11 +171,11 @@ const Products = () => {
   // Company filter options
   const companyOptions = [
     { label: 'All Companies', value: '' },
-    { label: 'Sylvac', value: 'Sylvac' },
-    { label: 'Mahr', value: 'Mahr' },
     { label: 'Tespa', value: 'Tespa' },
     { label: 'Inprocess Gauging', value: 'Inprocess Gauging' },
-    { label: 'SCANTECH 3D', value: 'SCANTECH 3D' }
+    { label: 'Sylvac', value: 'Sylvac' },
+    { label: 'Mahr', value: 'Mahr' },
+    { label: 'Scantech 3D', value: 'SCANTECH 3D' }
   ];
 
   const handleCompanyChange = (company: string) => {
