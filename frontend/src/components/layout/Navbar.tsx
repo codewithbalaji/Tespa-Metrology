@@ -21,6 +21,7 @@ const Navbar = () => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -400,40 +401,57 @@ const Navbar = () => {
               <nav className="flex flex-col space-y-4 py-4">
                 {navLinks.map((link) => (
                   link.isDropdown ? (
-                    <div key={link.name} className="space-y-3">
-                      <div className="text-gray-900 font-medium">{link.name}</div>
-                      <div className="space-y-2">
-                        {link.items?.map((item) => (
-                          <button
-                            key={item.name}
-                            onClick={() => {
-                              handleProductClick(item.href);
-                              setIsOpen(false);
-                            }}
-                            className="flex items-center w-full py-2 space-x-3 text-gray-600 hover:text-[#27a3d4]"
-                          >
-                            {typeof item.icon === 'string' ? (
-                              <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
-                                <img 
-                                  src={item.icon} 
-                                  alt={item.name} 
-                                  className="w-full h-full object-contain p-1"
-                                />
-                              </div>
-                            ) : (
-                              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 border border-gray-100">
-                                {item.icon}
-                              </div>
-                            )}
-                            <div className="flex flex-col items-start">
-                              <span className="text-sm font-medium">{item.name}</span>
-                              {item.description && (
-                                <span className="text-xs text-gray-500">{item.description}</span>
+                    <div key={link.name} className="space-y-1">
+                      <button
+                        type="button"
+                        className="flex items-center justify-between w-full text-gray-900 font-medium py-2 focus:outline-none"
+                        onClick={() => setMobileActiveDropdown(mobileActiveDropdown === link.id ? null : link.id)}
+                      >
+                        <span>{link.name}</span>
+                        <svg
+                          className={`w-5 h-5 ml-2 transition-transform ${mobileActiveDropdown === link.id ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {mobileActiveDropdown === link.id && (
+                        <div className="space-y-2 pl-4">
+                          {link.items?.map((item) => (
+                            <button
+                              key={item.name}
+                              onClick={() => {
+                                handleProductClick(item.href)
+                                setIsOpen(false)
+                                setMobileActiveDropdown(null)
+                              }}
+                              className="flex items-center w-full py-2 space-x-3 text-gray-600 hover:text-[#27a3d4]"
+                            >
+                              {typeof item.icon === 'string' ? (
+                                <div className="w-8 h-8 rounded-lg overflow-hidden bg-gray-50 border border-gray-100">
+                                  <img 
+                                    src={item.icon} 
+                                    alt={item.name} 
+                                    className="w-full h-full object-contain p-1"
+                                  />
+                                </div>
+                              ) : (
+                                <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 border border-gray-100">
+                                  {item.icon}
+                                </div>
                               )}
-                            </div>
-                          </button>
-                        ))}
-                      </div>
+                              <div className="flex flex-col items-start">
+                                <span className="text-sm font-medium">{item.name}</span>
+                                {item.description && (
+                                  <span className="text-xs text-gray-500">{item.description}</span>
+                                )}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <Link
@@ -456,7 +474,6 @@ const Navbar = () => {
                     </Link>
                   )
                 ))}
-                
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="bg-[#27a3d4] hover:bg-[#1d8cb8] text-white w-full rounded-full mt-2 py-3 text-lg">
                     Contact Us

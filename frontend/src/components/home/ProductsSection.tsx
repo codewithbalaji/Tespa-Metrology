@@ -136,7 +136,7 @@ const ProductsSection = () => {
           className="text-center mb-12"
         >
           <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-[#27a3d4] mb-2">
-            Precision Instruments
+          Precision Measuring Systems
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3">Our Products</h2>
           <div className="w-20 h-1 bg-[#27a3d4] mx-auto"></div>

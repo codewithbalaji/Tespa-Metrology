@@ -61,7 +61,7 @@ const CalibrationFacility = () => {
       id: 'chennai',
       name: 'Chennai',
       title: 'Chennai Calibration',
-      description: 'Tespa Calibration Centre located in Anna Nagar East, Chennai was established in the year 1995. Tespa Calibration Center is accredited by NABL for the ISO/IEC 17025. Our NABL Lab is fully equipped with latest computerized equipment from Switzerland, Italy and UK and all Primary and Secondary master Standards. We Offer high-quality calibration in the field of Mechanical (Dimension and Pressure), Electro-Technical or Electrical, and Thermal.',
+      description: 'Tespa Calibration Centre located in Anna Nagar East, Chennai was established in the year 1995. Tespa Calibration Center is accredited by NABL for the ISO/IEC 17025. Our NABL Lab is fully equipped with latest computerized equipment from Switzerland, Italy and UK and all Primary and Secondary master Standards. We Offer high-quality calibration in the field of Mechanical (Dimension and Pressure), Electro-Technical or Electrical and Thermal.',
       image1: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1740736332/chennai-1_q5srhx.jpg',
       image2: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1740736366/chennai-2_edpc8g.jpg',
       year: '1995',

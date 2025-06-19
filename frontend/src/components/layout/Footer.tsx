@@ -157,8 +157,8 @@ const Footer = () => {
             
             <div className="flex items-center">
               <Mail size={16} className="mr-2 text-[#27a3d4] flex-shrink-0" />
-              <a href="mailto:sales@tespametrology.com" className="text-sm text-gray-300 hover:text-white hover:underline">
-                sales@tespametrology.com
+              <a href="mailto:sales@tespaindia.com" className="text-sm text-gray-300 hover:text-white hover:underline">
+              sales@tespaindia.com
               </a>
             </div>
             

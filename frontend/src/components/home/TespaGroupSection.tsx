@@ -18,13 +18,13 @@ const TespaGroupSection = () => {
   const features = [
     {
       title: "PRODUCTS",
-      description: "Manufacturers worldwide depend on Inprocess gauging in their pursuit of excellence in order to improve productivity and reliability and to save time and cost.",
+      description: "Tespa Metrology offers a comprehensive portfolio of precision measurement solutions. We manufacture high-performance Height Gauges, CMMs, and VMMs tailored to industry needs.",
       delay: 0.2,
       icon: Truck
     },
     {
       title: "CALIBRATION",
-      description: "TESPA established the Calibration Centre in the year 1995 in the first lab to get Accreditation in 1999 in its part of India.",
+      description: "TESPA established the Calibration Centre in the year 1995 is the first lab to get Accreditation in 1999 in its part of India.",
       delay: 0.4,
       icon: Target
     },
@@ -123,7 +123,7 @@ const TespaGroupSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">TESPA GROUP OF COMPANIES</h2>
           <div className="w-24 h-1 bg-[#27a3d4] mx-auto mb-6"></div>
           <p className="text-gray-600 md:text-lg leading-relaxed">
-          TESPA Group of Companies, established in 1983, pioneers precision with innovation. We deliver excellence across metrology, robotics, and automation—empowering industries with trusted solutions and decades of engineering expertise.
+          TESPA Group of Companies, established in 1983, pioneers in precision with innovation. We deliver excellence across metrology, robotics, and automation—empowering industries with trusted solutions and decades of engineering expertise.
           </p>
         </motion.div>
 

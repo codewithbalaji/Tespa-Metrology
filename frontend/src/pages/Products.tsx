@@ -200,6 +200,15 @@ const Products = () => {
     }
   };
 
+  // Sort companies: Tespa, Inprocess Gauging, Sylvac, then the rest
+  const orderedCompanyNames = ['Tespa', 'Inprocess Gauging', 'Sylvac']
+  const orderedCompanies = [
+    ...orderedCompanyNames
+      .map(name => companies.find(c => c.name === name))
+      .filter(Boolean),
+    ...companies.filter(c => !orderedCompanyNames.includes(c.name))
+  ]
+
   return (
     <>
       <Helmet>
@@ -317,7 +326,7 @@ const Products = () => {
               <div className="space-y-12">
                 {/* If no filters are applied and not showing company-specific products, show by company */}
                 {!searchQuery && selectedCategories.length === 0 && !selectedCompany ? (
-                  companies.map(company => (
+                  orderedCompanies.map(company => (
                     <motion.div 
                       key={company.id}
                       initial={{ opacity: 0, y: 20 }}
@@ -360,25 +369,42 @@ const Products = () => {
                           ) : null;
                         })
                       ) : (
-                        // For other companies, show all categories
+                        // For other companies, show all categories except 'Others' subheading
                         Object.entries(company.categories).map(([categoryName, categoryProducts]) => (
-                          <div key={`${company.id}-${categoryName}`} className="mb-8">
-                            <h3 className="text-xl font-medium text-gray-700 mb-4">
-                              {categoryName}
-                            </h3>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                              {categoryProducts.map((product, index) => (
-                                <ProductCard 
-                                  key={product._id} 
-                                  product={product} 
-                                  index={index}
-                                  onClick={() => navigateToProduct(product.slug)}
-                                  formatPrice={formatPrice}
-                                />
-                              ))}
+                          categoryName === 'Others' ? (
+                            // Render products without subheading for 'Others'
+                            <div key={`${company.id}-${categoryName}`} className="mb-8">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                {categoryProducts.map((product, index) => (
+                                  <ProductCard 
+                                    key={product._id} 
+                                    product={product} 
+                                    index={index}
+                                    onClick={() => navigateToProduct(product.slug)}
+                                    formatPrice={formatPrice}
+                                  />
+                                ))}
+                              </div>
                             </div>
-                          </div>
+                          ) : (
+                            <div key={`${company.id}-${categoryName}`} className="mb-8">
+                              <h3 className="text-xl font-medium text-gray-700 mb-4">
+                                {categoryName}
+                              </h3>
+                              
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                {categoryProducts.map((product, index) => (
+                                  <ProductCard 
+                                    key={product._id} 
+                                    product={product} 
+                                    index={index}
+                                    onClick={() => navigateToProduct(product.slug)}
+                                    formatPrice={formatPrice}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          )
                         ))
                       )}
                     </motion.div>

@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   const heroImages = [
     {
-      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4902_ymfoty-min_xc5nnp.webp',
+      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4859_n08oev-min_vqo8tz.webp',
       title: 'Precision Metrology',
       subtitle: 'Advanced measurement solutions for quality control'
     },
@@ -20,7 +20,8 @@ const HeroSection = () => {
       subtitle: 'High-accuracy dimensional inspection systems'
     },
     {
-      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4859_n08oev-min_vqo8tz.webp',
+      
+      url: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750310886/0I5A4902_ymfoty-min_xc5nnp.webp',
       title: 'Industrial Quality',
       subtitle: 'Comprehensive inspection tools for manufacturing'
     }
@@ -89,7 +90,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 h-full flex items-center">
+      <div className="relative z-10 container mx-auto px-6 h-full flex items-center pb-32 md:pb-0">
         <div className="max-w-3xl">
           <motion.div 
             className="flex items-center mb-6"
@@ -99,7 +100,7 @@ const HeroSection = () => {
           >
             <div className="h-1 w-16 bg-[#27a3d4] mr-4"></div>
             <span className="text-[#27a3d4] font-medium tracking-wider uppercase text-sm">
-              TESPA Precision Tools
+              TESPA METROLOGY
             </span>
           </motion.div>
 
