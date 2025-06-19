@@ -10,7 +10,7 @@ const About = () => {
 
   
   const companyDetails = [
-  { title: "Company Name", value: "TESPA TOOLS PRIVATE LIMITED" },
+  { title: "Company Name", value: "TESPA METROLOGY" },
   { title: "Year Established", value: "1983" },
   { title: "Business Type", value: "Manufacturer, Importer, Distributor" },
   { title: "Main Products", value: "Precision Metrology Instruments" },
@@ -88,7 +88,7 @@ const businessActivities = [
                     <div className="w-20 h-1 bg-[#27a3d4] mb-6"></div>
                     
                     <p className="text-gray-700 mb-5 leading-relaxed">
-                      Welcome to TESPA TOOLS PRIVATE LIMITED, a pioneering force in the field of metrology since 1983. As esteemed manufacturers, importers and distributors of metrology instruments, we have consistently upheld a commitment to precision, accuracy, and innovation throughout our illustrious journey.
+                      Welcome to TESPA METROLOGY, a pioneering force in the field of metrology since 1983. As esteemed manufacturers, importers and distributors of metrology instruments, we have consistently upheld a commitment to precision, accuracy, and innovation throughout our illustrious journey.
                     </p>
                     
                     <p className="text-gray-700 mb-5 leading-relaxed">

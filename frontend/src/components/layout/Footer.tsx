@@ -67,7 +67,7 @@ const Footer = () => {
           >
             <h3 className="text-xl font-bold mb-4 border-b border-gray-700 pb-2">ABOUT US</h3>
             <p className="text-gray-300 text-sm">
-              TESPA TECHNOGRAM ENGINEERED SPECIAL PURPOSE APPLICATIONS was promoted by Technicraft Pvt. Ltd & S. Koliyar Shetty, Graduate Engineer of College of Engg, Guindy, Chennai in the year 1983.
+            Welcome to TESPA METROLOGY — your trusted partner in precision since 1983. As leading manufacturers, importers, and distributors of metrology instruments, we are committed to delivering accuracy, innovation, and reliability. Explore our wide range of precision tools built to meet diverse industrial demands. With decades of expertise and a forward-looking vision, Tespa continues to evolve—expanding beyond metrology to serve clients with excellence across every endeavor.
             </p>
             <div className="flex space-x-4 pt-2">
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
