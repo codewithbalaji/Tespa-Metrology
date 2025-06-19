@@ -76,7 +76,7 @@ const Testimonial = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-6">What Our Clients Say</h2>
               <p className="text-lg text-gray-600">
                 Don't just take our word for it. Hear from the businesses who have transformed their 
-                precision measurement capabilities with TESPA Tools.
+                precision measurement capabilities with TESPA METROLOGY.
               </p>
             </motion.div>
 

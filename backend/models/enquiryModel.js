@@ -26,7 +26,7 @@ const enquirySchema = new mongoose.Schema({
     required: true,
     min: 1
   },
-  measurementUnits: {
+  companyName: {
     type: String,
     required: false,
     trim: true

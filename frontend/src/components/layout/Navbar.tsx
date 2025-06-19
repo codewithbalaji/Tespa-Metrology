@@ -130,7 +130,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center">
               <img
                 src="https://res.cloudinary.com/dyj3rywju/image/upload/v1742822875/tespalogob_yuewe1.png" 
-                alt="TESPA TOOLS Logo" 
+                alt="TESPA METROLOGY Logo" 
                 className="tespa-logo h-14 w-auto"
               />
             </Link>

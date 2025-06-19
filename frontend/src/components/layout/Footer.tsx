@@ -123,7 +123,7 @@ const Footer = () => {
             <div className="bg-white p-2 rounded-lg w-32 h-32">
               <img 
                 src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tespatools.com" 
-                alt="TESPA TOOLS QR Code" 
+                alt="TESPA METROLOGY QR Code" 
                 className="w-full h-full"
               />
             </div>
@@ -179,7 +179,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>© {new Date().getFullYear()} TESPA TOOLS PRIVATE LIMITED. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} TESPA METROLOGY PRIVATE LIMITED. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

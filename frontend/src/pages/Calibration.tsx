@@ -1,15 +1,60 @@
 import { Helmet } from 'react-helmet-async'
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
-import { ChevronRight, MapPin, Truck, Check, Calendar } from 'lucide-react';
+import { ChevronRight, MapPin, Truck, Check, Calendar, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const publicUrl = import.meta.env.VITE_PUBLIC_URL
 
+// Image Modal Component
+const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
+  if (!isOpen) return null;
+  
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4">
+      <div className="relative max-w-4xl w-full">
+        <button 
+          onClick={onClose}
+          className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+          aria-label="Close modal"
+        >
+          <X size={24} />
+        </button>
+        <img 
+          src={imageSrc} 
+          alt={imageAlt} 
+          className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+        />
+      </div>
+    </div>
+  );
+};
+
 const CalibrationFacility = () => {
   const [activeLocation, setActiveLocation] = useState('chennai');
+  const [modalImage, setModalImage] = useState({
+    isOpen: false,
+    src: '',
+    alt: ''
+  });
+  
+  const openModal = (src, alt) => {
+    setModalImage({
+      isOpen: true,
+      src,
+      alt
+    });
+  };
+  
+  const closeModal = () => {
+    setModalImage({
+      isOpen: false,
+      src: '',
+      alt: ''
+    });
+  };
 
   const locations = [
     {
@@ -60,6 +105,13 @@ const CalibrationFacility = () => {
         <link rel="canonical" href={`${publicUrl}/calibration`} />
       </Helmet>
       <MainLayout>
+        {/* Image Modal */}
+        <ImageModal 
+          isOpen={modalImage.isOpen}
+          onClose={closeModal}
+          imageSrc={modalImage.src}
+          imageAlt={modalImage.alt}
+        />
         <div className="bg-[#f8f9fa] min-h-screen">
           {/* Header Section */}
           <div className="bg-white shadow-sm py-8">
@@ -182,9 +234,10 @@ const CalibrationFacility = () => {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <motion.div 
-                      className="bg-white p-3 shadow-lg rounded-lg overflow-hidden"
+                      className="bg-white p-3 shadow-lg rounded-lg overflow-hidden cursor-pointer"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
+                      onClick={() => openModal(activeLocationData.image1, `${activeLocationData.name} Calibration Facility 1`)}
                     >
                       <img 
                         src={activeLocationData.image1} 
@@ -194,9 +247,10 @@ const CalibrationFacility = () => {
                     </motion.div>
                     
                     <motion.div 
-                      className="bg-white p-3 shadow-lg rounded-lg overflow-hidden"
+                      className="bg-white p-3 shadow-lg rounded-lg overflow-hidden cursor-pointer"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
+                      onClick={() => openModal(activeLocationData.image2, `${activeLocationData.name} Calibration Facility 2`)}
                     >
                       <img 
                         src={activeLocationData.image2} 
@@ -204,6 +258,33 @@ const CalibrationFacility = () => {
                         className="w-full h-56 object-cover rounded"
                       />
                     </motion.div>
+                    
+                    {/* Certification Image */}
+                    {activeLocationData.id !== 'mobile' && (
+                      <motion.div 
+                        className="md:col-span-2 bg-white p-3 shadow-lg rounded-lg overflow-hidden cursor-pointer"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={() => {
+                          const certSrc = activeLocationData.id === 'chennai' 
+                            ? 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1750287729/chennai_qazndu.jpg' 
+                            : activeLocationData.id === 'bangalore' 
+                            ? 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1750287777/bengaluru_g6rflw.jpg' 
+                            : 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1750287715/coimbatore_a5ojjn.jpg';
+                          openModal(certSrc, `${activeLocationData.name} NABL Certification`);
+                        }}
+                      >
+                        <h3 className="text-lg font-semibold mb-3 text-center text-gray-800">NABL Certification</h3>
+                        <img 
+                          src={activeLocationData.id === 'chennai' ? 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1750287729/chennai_qazndu.jpg' : 
+                               activeLocationData.id === 'bangalore' ? 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1750287777/bengaluru_g6rflw.jpg' : 
+                               activeLocationData.id === 'coimbatore' ? 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1750287715/coimbatore_a5ojjn.jpg' : ''} 
+                          alt={`${activeLocationData.name} NABL Certification`}
+                          className="w-full object-contain rounded"
+                          style={{ height: '300px' }}
+                        />
+                      </motion.div>
+                    )}
                     
                     <motion.div 
                       className="md:col-span-2 bg-[#27a3d4]/10 p-6 rounded-lg"

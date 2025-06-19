@@ -69,7 +69,7 @@ const Edit = ({ token }: { token: string }) => {
       slug: '',
       description: '',
       price: '',
-      category: 'Metrology Measuring Equipments',
+      category: 'Coordinate Measuring Machine',
       stock: '0',
       model: '',
       company: 'Tespa',

@@ -302,7 +302,7 @@ const Careers = () => {
                   <Briefcase size={48} className="mx-auto mb-6 text-[#27a3d4]" />
                   <h2 className="text-3xl font-bold text-gray-800 mb-6">Join Our Team</h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    At TESPA Tools, we're always looking for talented individuals who are passionate about precision, 
+                    At TESPA, we're always looking for talented individuals who are passionate about precision, 
                     quality, and innovation. Join us to build a rewarding career in the metrology industry.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">

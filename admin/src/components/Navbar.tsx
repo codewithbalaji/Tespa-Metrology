@@ -18,7 +18,7 @@ const Navbar = ({ setToken }: NavbarProps) => {
         >
           <img
             src="https://res.cloudinary.com/dryhpaq1t/image/upload/e_background_removal/f_png/v1740752141/tespa_logo_fvfey9.jpg"
-            alt="TESPA TOOLS"
+            alt="TESPA METROLOGY"
             className="h-10 w-auto object-contain"
           />
           <span className="hidden font-bold sm:inline-block">

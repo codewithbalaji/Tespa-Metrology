@@ -1,22 +1,57 @@
 import { Helmet } from 'react-helmet-async'
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Gauge, Wrench, BarChart3, Microscope, Ruler, Settings, Clipboard, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const publicUrl = import.meta.env.VITE_PUBLIC_URL
 
 const About = () => {
+
+  
   const companyDetails = [
-    { title: 'Nature of Business', value: 'Manufacturer, Supplier, Exporter' },
-    { title: 'Number of Employees', value: '86 Employees' },
-    { title: 'Year of Establishment', value: '1983' },
-    { title: 'Market Covered', value: 'Asia, Middle East and European Countries' },
-    { title: 'Name of Founder', value: 'Mr. Kolyar Sudendranath Shetty' },
-    { title: 'GST No', value: '33AAACT2870N1Z5' },
-    { title: 'Annual Turnover', value: 'Rs. 9 Crore Approx' },
-    { title: 'Legal Status of Firm', value: 'Private Limited Company' },
-  ];
+  { title: "Company Name", value: "TESPA TOOLS PRIVATE LIMITED" },
+  { title: "Year Established", value: "1983" },
+  { title: "Business Type", value: "Manufacturer, Importer, Distributor" },
+  { title: "Main Products", value: "Precision Metrology Instruments" },
+  { title: "Location", value: "Chennai, Bangalore, Coimbatore" },
+  { title: "Employees", value: "50-100 People" },
+];
+
+const businessActivities = [
+  {
+    title: "Calibration Services",
+    icon: Gauge,
+  },
+  {
+    title: "Repair & Maintenance",
+    icon: Wrench,
+  },
+  {
+    title: "Quality Control",
+    icon: BarChart3,
+  },
+  {
+    title: "Laboratory Services",
+    icon: Microscope,
+  },
+  {
+    title: "Dimensional Metrology",
+    icon: Ruler,
+  },
+  {
+    title: "Equipment Sales",
+    icon: Settings,
+  },
+  {
+    title: "Documentation",
+    icon: Clipboard,
+  },
+  {
+    title: "Facility Management",
+    icon: Building,
+  },
+];
 
   return (
     <>
@@ -40,6 +75,7 @@ const About = () => {
 
           <div className="container mx-auto px-4 py-16">
             <div className="grid grid-cols-1 gap-8">
+              {/* Company Overview */}
               <motion.div 
                 className="lg:col-span-3"
                 initial={{ opacity: 0, y: 20 }}
@@ -52,20 +88,74 @@ const About = () => {
                     <div className="w-20 h-1 bg-[#27a3d4] mb-6"></div>
                     
                     <p className="text-gray-700 mb-5 leading-relaxed">
-                      Established in the year 1983, Tespa Tools Pvt Ltd is among the leading and trustworthy organizations of this domain, engaged in Manufacturers, Exporters, Supplier a wide range of products.
+                      Welcome to TESPA TOOLS PRIVATE LIMITED, a pioneering force in the field of metrology since 1983. As esteemed manufacturers, importers and distributors of metrology instruments, we have consistently upheld a commitment to precision, accuracy, and innovation throughout our illustrious journey.
                     </p>
                     
                     <p className="text-gray-700 mb-5 leading-relaxed">
-                      Our offered assortment of products is comprises of Exato 565 Coordinate Measuring Machine, Exato 785 Coordinate Measuring Machine, Exato 7106 Coordinate Measuring Machine, Exato 9158 Coordinate Measuring Machine, Exato 10209 Coordinate Measuring Machine, Orama 2015 Video Measuring Machine, Orama 3020 Video Measuring Machine, Orama 4030 Video Measuring Machine, Metra 450 Mm 2D Height Gauge, Metra 700mm 2D Height Gauge etc.
+                      Discover a comprehensive selection of precision tools designed to cater to various industry needs. From advanced measuring instruments to user-friendly tools, Tespa Tools Pvt. Ltd., is your go-to source for precision without compromise.
                     </p>
                     
                     <p className="text-gray-700 mb-5 leading-relaxed">
-                      Offered products are manufactured from supreme grade basic material by using modern tools and technology. All these products are made as per the industry approved parameters with the supervision of our skilled and experienced workforce. Our offered products are highly demanded across the market for their optimum quality.
+                      Beyond our core focus on metrology, we have successfully diversified our business activities to cater to the multifaceted needs of our clients. Our commitment to excellence extends to every facet of our operations, whether it be in product quality, customer service, or exploring new avenues for growth.
                     </p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Business Activities */}
+              <motion.div
+                className="lg:col-span-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+                  <div className="p-8">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">Business Activities</h2>
+                    <div className="w-20 h-1 bg-[#27a3d4] mb-8"></div>
                     
-                    <p className="text-gray-700 leading-relaxed">
-                      Our organization is growing with a fast rate because of valuable assistance of our mentor, Mr. Kolyar Sudendranath Shetty. His management skills, ability to handle crucial situation and regular motivation, enabled us to achieve such a remarkable peak of success in the market.
-                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {businessActivities.map((activity, index) => {
+                        const IconComponent = activity.icon;
+                        return (
+                          <motion.div
+                            key={index}
+                            className="bg-gray-50 p-6 rounded-lg flex flex-col items-center text-center hover:shadow-md transition-shadow"
+                            whileHover={{ y: -5 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <div className="w-16 h-16 bg-[#27a3d4]/10 rounded-full flex items-center justify-center mb-4">
+                              <IconComponent size={24} className="text-[#27a3d4]" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800">{activity.title}</h3>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Company Details */}
+              <motion.div
+                className="lg:col-span-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+                  <div className="p-8">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">Company Details</h2>
+                    <div className="w-20 h-1 bg-[#27a3d4] mb-8"></div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {companyDetails.map((detail, index) => (
+                        <div key={index} className="border-l-4 border-[#27a3d4] pl-4 py-2">
+                          <h3 className="text-sm font-medium text-gray-500">{detail.title}</h3>
+                          <p className="text-lg font-semibold text-gray-800">{detail.value}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>

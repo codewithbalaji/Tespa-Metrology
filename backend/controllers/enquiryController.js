@@ -1,5 +1,4 @@
-import enquiryModel from '../models/enquiryModel.js'
-import productModel from '../models/productModel.js'
+import enquiryModel from '../models/enquiryModel.js';
 import jwt from 'jsonwebtoken'
 
 
@@ -11,7 +10,7 @@ import jwt from 'jsonwebtoken'
         productName,
         email,
         quantity,
-        measurementUnits,
+        companyName,
         mobileNo,
         country,
         purpose,
@@ -70,7 +69,7 @@ import jwt from 'jsonwebtoken'
         productName,
         email,
         quantity,
-        measurementUnits,
+        companyName,
         mobileNo,
         country,
         purpose,

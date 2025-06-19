@@ -108,18 +108,22 @@ const ProductCard = ({ product, index }: { product: Product, index: number }) =>
 
 const ProductsSection = () => {
   const { products, isIndianUser } = useContext(ShopContext);
-  const [latestProducts, setLatestProducts] = useState<Product[]>([]);
+  const [tespaProducts, setTespaProducts] = useState<Product[]>([]);
   
   useEffect(() => {
-    // Sort products by creation date (newest first) and take the first 4
+    // Filter for Tespa company products and take the first 4
     if (products && products.length > 0) {
-      const sorted = [...products]
+      const filtered = products
+        .filter(product => product.company === 'Tespa')
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
         .slice(0, 4);
       
-      setLatestProducts(sorted);
+      setTespaProducts(filtered);
     }
   }, [products]);
+
+  // The ProductCard component already has a Link to view product details
+  // No need for additional navigation function
 
   return (
     <section className="py-24 bg-gradient-to-b from-blue-50 to-white">
@@ -134,16 +138,16 @@ const ProductsSection = () => {
           <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-[#27a3d4] mb-2">
             Precision Instruments
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3">Latest Products</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3">Our Products</h2>
           <div className="w-20 h-1 bg-[#27a3d4] mx-auto"></div>
           <p className="text-gray-600 mt-5 max-w-2xl mx-auto">
             Explore our range of high-precision metrology and measurement tools designed for industrial excellence
           </p>
         </motion.div>
         
-        {latestProducts.length > 0 ? (
+        {tespaProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {latestProducts.map((product, index) => (
+            {tespaProducts.map((product, index) => (
               <ProductCard 
                 key={product._id} 
                 product={product} 

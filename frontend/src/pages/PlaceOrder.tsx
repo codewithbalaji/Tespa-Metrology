@@ -135,7 +135,7 @@ const PlaceOrder = () => {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: order.amount,
       currency: order.currency,
-      name: 'TESPA TOOLS',
+      name: 'TESPA METROLOGY',
       description: 'Payment for measuring instruments',
       order_id: order.id,
       receipt: order.receipt,

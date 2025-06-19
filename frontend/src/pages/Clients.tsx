@@ -163,7 +163,7 @@ const Clients = () => {
                   <div className="w-16 h-16 bg-[#27a3d4]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users size={32} className="text-[#27a3d4]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">500+</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">5000+</h3>
                   <p className="text-gray-600">Satisfied Clients</p>
                 </motion.div>
                 

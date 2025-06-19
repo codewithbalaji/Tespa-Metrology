@@ -62,7 +62,7 @@ const Add = ({ token }: AddProps) => {
       name: '',
       description: '',
       price: '',
-      category: 'Metrology Measuring Equipments',
+      category: 'Coordinate Measuring Machine',
       stock: '0',
       model: '',
       company: 'Tespa',
@@ -154,13 +154,13 @@ const Add = ({ token }: AddProps) => {
         reset({
           ...{
             name: '',
-            description: '',
-            price: '',
-            category: 'Metrology Measuring Equipments',
-            stock: '0',
-            model: '',
-            company: 'Tespa',
-            features: []
+          description: '',
+          price: '',
+          category: 'Coordinate Measuring Machine',
+          stock: '0',
+          model: '',
+          company: 'Tespa',
+          features: []
           },
           specifications: defaultSpecifications
         });

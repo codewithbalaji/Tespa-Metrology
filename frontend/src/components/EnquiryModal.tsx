@@ -19,7 +19,7 @@ const EnquiryModal = ({ isOpen, onClose, productName, productId }: EnquiryModalP
   const [formData, setFormData] = useState({
     email: '',
     quantity: 1,
-    measurementUnits: '',
+    companyName: '',
     mobileNo: '',
     country: '',
     purpose: '',
@@ -107,7 +107,7 @@ const EnquiryModal = ({ isOpen, onClose, productName, productId }: EnquiryModalP
         setFormData({
           email: '',
           quantity: 1,
-          measurementUnits: '',
+          companyName: '',
           mobileNo: '',
           country: '',
           purpose: '',
@@ -192,6 +192,20 @@ const EnquiryModal = ({ isOpen, onClose, productName, productId }: EnquiryModalP
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
+                <div>
+                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-1">
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#27a3d4] focus:border-[#27a3d4]"
+                      placeholder="Your Company Name"
+                    />
+                  </div>
                   <div>
                     <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-1">
                       Quantity <span className="text-red-500">*</span>
@@ -207,20 +221,7 @@ const EnquiryModal = ({ isOpen, onClose, productName, productId }: EnquiryModalP
                     />
                     {errors.quantity && <p className="mt-1 text-xs text-red-500">{errors.quantity}</p>}
                   </div>
-                  <div>
-                    <label htmlFor="measurementUnits" className="block text-sm font-medium text-gray-700 mb-1">
-                      Measurement Units
-                    </label>
-                    <input
-                      type="text"
-                      id="measurementUnits"
-                      name="measurementUnits"
-                      value={formData.measurementUnits}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#27a3d4] focus:border-[#27a3d4]"
-                      placeholder="e.g., mm, cm, inches"
-                    />
-                  </div>
+                  
                 </div>
                 
                 <div>

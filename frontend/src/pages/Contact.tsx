@@ -203,11 +203,19 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <img 
-                      src="https://res.cloudinary.com/dryhpaq1t/image/upload/v1740753676/tespa_headquarters_miewf2.jpg"
-                      alt="tespa headquarters" 
-                      className="w-full h-auto rounded-lg shadow-md"
-                    />
+                  <div className="lg:col-span-7">
+                    <div className="bg-white p-3 shadow-lg rounded-lg h-full">
+                      <div className="relative pb-[56.25%] h-0 overflow-hidden rounded">
+                        <iframe 
+                          src={activeLocationData.mapUrl} 
+                          className="absolute top-0 left-0 w-full h-full border-0" 
+                          allowFullScreen={true} 
+                          loading="lazy"
+                          title={`${activeLocationData.name} Location Map`}
+                        ></iframe>
+                      </div>
+                    </div>
+                  </div>
                   </div>
                 </div>
               </motion.div>

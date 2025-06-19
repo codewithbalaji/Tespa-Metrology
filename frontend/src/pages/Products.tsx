@@ -32,6 +32,14 @@ interface Category {
   products: Product[];
 }
 
+// Define company type
+interface Company {
+  id: string;
+  name: string;
+  products: Product[];
+  categories: { [key: string]: Product[] };
+}
+
 const publicUrl = import.meta.env.VITE_PUBLIC_URL
 
 const Products = () => {
@@ -43,6 +51,7 @@ const Products = () => {
   const [selectedCompany, setSelectedCompany] = useState<string>('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [companies, setCompanies] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Handle URL query parameters
@@ -56,10 +65,10 @@ const Products = () => {
     }
   }, [location.search]);
 
-  // Group products by category
+  // Group products by category and company
   useEffect(() => {
     if (products && products.length > 0) {
-      // Get unique categories, including 'Others'
+      // Get unique categories
       const uniqueCategories = [...new Set(products.map(product => product.category))];
       
       // Create category objects
@@ -74,7 +83,33 @@ const Products = () => {
         };
       });
       
+      // Get unique companies
+      const uniqueCompanies = [...new Set(products.map(product => product.company))];
+      
+      // Create company objects
+      const companyObjects = uniqueCompanies.map(companyName => {
+        const companyId = companyName.toLowerCase().replace(/\s+/g, '-');
+        const companyProducts = products.filter(product => product.company === companyName);
+        
+        // Group products by category within each company
+        const companyCategories: { [key: string]: Product[] } = {};
+        companyProducts.forEach(product => {
+          if (!companyCategories[product.category]) {
+            companyCategories[product.category] = [];
+          }
+          companyCategories[product.category].push(product);
+        });
+        
+        return {
+          id: companyId,
+          name: companyName,
+          products: companyProducts,
+          categories: companyCategories
+        };
+      });
+      
       setCategories(categoryObjects);
+      setCompanies(companyObjects);
       setFilteredProducts(products);
       setLoading(false);
     }
@@ -110,13 +145,20 @@ const Products = () => {
     
     setFilteredProducts(filtered);
   }, [searchQuery, selectedCategories, selectedCompany, products]);
+  
+  // Define Tespa subcategories
+  const tespaSubcategories = [
+    'Heights Gauge',
+    'Video Measuring Machine',
+    'Coordinate Measuring Machine'
+  ];
 
-  const toggleCategory = (categoryId: string) => {
-    setSelectedCategories(prev => 
-      prev.includes(categoryId) 
-        ? prev.filter(id => id !== categoryId)
-        : [...prev, categoryId]
-    );
+  const handleCategoryChange = (categoryId: string) => {
+    if (categoryId) {
+      setSelectedCategories([categoryId]);
+    } else {
+      setSelectedCategories([]);
+    }
   };
 
   const clearFilters = () => {
@@ -126,8 +168,8 @@ const Products = () => {
     navigate('/products');
   };
 
-  // Get unique companies from products
-  const companies = [
+  // Company filter options
+  const companyOptions = [
     { label: 'All Companies', value: '' },
     { label: 'Sylvac', value: 'Sylvac' },
     { label: 'Mahr', value: 'Mahr' },
@@ -225,28 +267,31 @@ const Products = () => {
                     onChange={(e) => handleCompanyChange(e.target.value)}
                     className="border rounded-full px-4 py-1.5 text-sm text-gray-700 focus:outline-none focus:border-[#27a3d4]"
                   >
-                    {companies.map(company => (
+                    {companyOptions.map(company => (
                       <option key={company.value} value={company.value}>
                         {company.label}
                       </option>
                     ))}
                   </select>
                   
-                  {/* Category Filters */}
-                  {categories.map(category => (
-                    <Button
-                      key={category.id}
-                      variant={selectedCategories.includes(category.id) ? "default" : "outline"}
-                      className={`rounded-full text-sm ${
-                        selectedCategories.includes(category.id) 
-                          ? "bg-[#27a3d4] hover:bg-[#1d8cb8]" 
-                          : "text-gray-700 hover:text-[#27a3d4] hover:border-[#27a3d4]"
-                      }`}
-                      onClick={() => toggleCategory(category.id)}
+                  {/* Category Filters - Only show for Tespa company */}
+                  {selectedCompany === 'Tespa' && (
+                    <select
+                      value={selectedCategories.length > 0 ? selectedCategories[0] : ''}
+                      onChange={(e) => handleCategoryChange(e.target.value)}
+                      className="border rounded-full px-4 py-1.5 text-sm text-gray-700 focus:outline-none focus:border-[#27a3d4]"
                     >
-                      {category.name}
-                    </Button>
-                  ))}
+                      <option value="">All Categories</option>
+                      {tespaSubcategories.map(category => {
+                        const categoryId = category.toLowerCase().replace(/\s+/g, '-');
+                        return (
+                          <option key={categoryId} value={categoryId}>
+                            {category}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  )}
                   
                   {(searchQuery || selectedCategories.length > 0 || selectedCompany) && (
                     <Button 
@@ -270,63 +315,210 @@ const Products = () => {
             ) : (
               /* Products Display */
               <div className="space-y-12">
-                {/* If no filters are applied and not showing company-specific products, show by category */}
+                {/* If no filters are applied and not showing company-specific products, show by company */}
                 {!searchQuery && selectedCategories.length === 0 && !selectedCompany ? (
-                  categories.map(category => (
+                  companies.map(company => (
                     <motion.div 
-                      key={category.id}
+                      key={company.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
                       className="mb-10"
                     >
                       <h2 className="text-2xl font-bold text-gray-800 mb-5 pb-2 border-b border-gray-200">
-                        {category.name}
+                        {company.name}
                       </h2>
                       
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {category.products.map((product, index) => (
-                          <ProductCard 
-                            key={product._id} 
-                            product={product} 
-                            index={index}
-                            onClick={() => navigateToProduct(product.slug)}
-                            formatPrice={formatPrice}
-                          />
-                        ))}
-                      </div>
+                      {/* Display products by category within each company */}
+                      {company.name === 'Tespa' ? (
+                        // For Tespa, only show the specified subcategories
+                        tespaSubcategories.map(subcategory => {
+                          // Check if there are products in this subcategory
+                          const subcategoryProducts = company.products.filter(
+                            product => product.category === subcategory
+                          );
+                          
+                          // Only render if there are products in this subcategory
+                          return subcategoryProducts.length > 0 ? (
+                            <div key={`${company.id}-${subcategory}`} className="mb-8">
+                              <h3 className="text-xl font-medium text-gray-700 mb-4">
+                                {subcategory}
+                              </h3>
+                              
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                {subcategoryProducts.map((product, index) => (
+                                  <ProductCard 
+                                    key={product._id} 
+                                    product={product} 
+                                    index={index}
+                                    onClick={() => navigateToProduct(product.slug)}
+                                    formatPrice={formatPrice}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          ) : null;
+                        })
+                      ) : (
+                        // For other companies, show all categories
+                        Object.entries(company.categories).map(([categoryName, categoryProducts]) => (
+                          <div key={`${company.id}-${categoryName}`} className="mb-8">
+                            <h3 className="text-xl font-medium text-gray-700 mb-4">
+                              {categoryName}
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                              {categoryProducts.map((product, index) => (
+                                <ProductCard 
+                                  key={product._id} 
+                                  product={product} 
+                                  index={index}
+                                  onClick={() => navigateToProduct(product.slug)}
+                                  formatPrice={formatPrice}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        ))
+                      )}
                     </motion.div>
                   ))
                 ) : (
                   // If filters are applied or showing company-specific products, show filtered results
                   <>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-5">
-                      {filteredProducts.length} {filteredProducts.length === 1 ? 'Result' : 'Results'} Found
-                    </h2>
-                    
-                    {filteredProducts.length > 0 ? (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {filteredProducts.map((product, index) => (
-                          <ProductCard 
-                            key={product._id} 
-                            product={product} 
-                            index={index}
-                            onClick={() => navigateToProduct(product.slug)}
-                            formatPrice={formatPrice}
-                          />
-                        ))}
-                      </div>
+                    {/* When Tespa is selected with a specific subcategory, show that as heading */}
+                    {selectedCompany === 'Tespa' && selectedCategories.length > 0 ? (
+                      <>
+                        <h2 className="text-2xl font-bold text-gray-800 mb-5">
+                          {tespaSubcategories.find(cat => 
+                            cat.toLowerCase().replace(/\s+/g, '-') === selectedCategories[0]
+                          )}
+                        </h2>
+                        
+                        {filteredProducts.length > 0 ? (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            {filteredProducts.map((product, index) => (
+                              <ProductCard 
+                                key={product._id} 
+                                product={product} 
+                                index={index}
+                                onClick={() => navigateToProduct(product.slug)}
+                                formatPrice={formatPrice}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-center py-12 bg-gray-50 rounded-lg">
+                            <p className="text-gray-500">No products found in this category.</p>
+                            <Button 
+                              variant="link" 
+                              className="text-[#27a3d4] mt-2"
+                              onClick={clearFilters}
+                            >
+                              Clear filters
+                            </Button>
+                          </div>
+                        )}
+                      </>
+                    ) : selectedCompany === 'Tespa' ? (
+                      // For Tespa with All Categories selected, group by subcategories
+                      <>
+                        <h2 className="text-2xl font-bold text-gray-800 mb-5">
+                          Tespa Products
+                        </h2>
+                        
+                        {tespaSubcategories.map(subcategory => {
+                          // Filter products for this subcategory
+                          const subcategoryProducts = filteredProducts.filter(
+                            product => product.category === subcategory
+                          );
+                          
+                          // Only render if there are products in this subcategory
+                          return subcategoryProducts.length > 0 ? (
+                            <div key={subcategory} className="mb-8">
+                              <h3 className="text-xl font-medium text-gray-700 mb-4">
+                                {subcategory}
+                              </h3>
+                              
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                {subcategoryProducts.map((product, index) => (
+                                  <ProductCard 
+                                    key={product._id} 
+                                    product={product} 
+                                    index={index}
+                                    onClick={() => navigateToProduct(product.slug)}
+                                    formatPrice={formatPrice}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          ) : null;
+                        })}
+                      </>
+                    ) : selectedCompany ? (
+                      // For other companies like Mahr, show all products directly under company name
+                      <>
+                        <h2 className="text-2xl font-bold text-gray-800 mb-5">
+                          {selectedCompany} Products
+                        </h2>
+                        
+                        {filteredProducts.length > 0 ? (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            {filteredProducts.map((product, index) => (
+                              <ProductCard 
+                                key={product._id} 
+                                product={product} 
+                                index={index}
+                                onClick={() => navigateToProduct(product.slug)}
+                                formatPrice={formatPrice}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-center py-12 bg-gray-50 rounded-lg">
+                            <p className="text-gray-500">No products found for this company.</p>
+                            <Button 
+                              variant="link" 
+                              className="text-[#27a3d4] mt-2"
+                              onClick={clearFilters}
+                            >
+                              Clear filters
+                            </Button>
+                          </div>
+                        )}
+                      </>
                     ) : (
-                      <div className="text-center py-12 bg-gray-50 rounded-lg">
-                        <p className="text-gray-500">No products found matching your criteria.</p>
-                        <Button 
-                          variant="link" 
-                          className="text-[#27a3d4] mt-2"
-                          onClick={clearFilters}
-                        >
-                          Clear filters
-                        </Button>
-                      </div>
+                      // Default case for search results
+                      <>
+                        <h2 className="text-2xl font-bold text-gray-800 mb-5">
+                          {filteredProducts.length} {filteredProducts.length === 1 ? 'Result' : 'Results'} Found
+                        </h2>
+                        
+                        {filteredProducts.length > 0 ? (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            {filteredProducts.map((product, index) => (
+                              <ProductCard 
+                                key={product._id} 
+                                product={product} 
+                                index={index}
+                                onClick={() => navigateToProduct(product.slug)}
+                                formatPrice={formatPrice}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-center py-12 bg-gray-50 rounded-lg">
+                            <p className="text-gray-500">No products found matching your criteria.</p>
+                            <Button 
+                              variant="link" 
+                              className="text-[#27a3d4] mt-2"
+                              onClick={clearFilters}
+                            >
+                              Clear filters
+                            </Button>
+                          </div>
+                        )}
+                      </>
                     )}
                   </>
                 )}

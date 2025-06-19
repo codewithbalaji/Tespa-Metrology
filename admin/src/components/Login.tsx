@@ -38,7 +38,7 @@ const Login = ({ setToken }: LoginProps) => {
         <div className="text-center space-y-2">
           <img
             src="https://res.cloudinary.com/dryhpaq1t/image/upload/e_background_removal/f_png/v1740752141/tespa_logo_fvfey9.jpg"
-            alt="TESPA TOOLS"
+            alt="TESPA METROLOGY"
             className="h-16 w-auto mx-auto"
           />
           <h1 className="text-2xl font-bold tracking-tight">
