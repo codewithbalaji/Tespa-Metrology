@@ -102,39 +102,6 @@ const businessActivities = [
                 </div>
               </motion.div>
               
-              {/* Business Activities */}
-              <motion.div
-                className="lg:col-span-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                  <div className="p-8">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-6">Business Activities</h2>
-                    <div className="w-20 h-1 bg-[#27a3d4] mb-8"></div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {businessActivities.map((activity, index) => {
-                        const IconComponent = activity.icon;
-                        return (
-                          <motion.div
-                            key={index}
-                            className="bg-gray-50 p-6 rounded-lg flex flex-col items-center text-center hover:shadow-md transition-shadow"
-                            whileHover={{ y: -5 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <div className="w-16 h-16 bg-[#27a3d4]/10 rounded-full flex items-center justify-center mb-4">
-                              <IconComponent size={24} className="text-[#27a3d4]" />
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-800">{activity.title}</h3>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
               
               {/* Company Details */}
               <motion.div
