@@ -15,7 +15,7 @@ const About = () => {
   { title: "Business Type", value: "Manufacturer, Importer, Distributor" },
   { title: "Main Products", value: "Precision Metrology Instruments" },
   { title: "Location", value: "Chennai, Bangalore, Coimbatore" },
-  { title: "Employees", value: "50-100 People" },
+  { title: "Employees", value: "100+ People" },
 ];
 
 const businessActivities = [

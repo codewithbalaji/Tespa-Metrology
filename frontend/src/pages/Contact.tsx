@@ -28,28 +28,28 @@ const Contact = () => {
     {
       name: 'Chennai',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242.88906244231006!2d80.22434962818444!3d13.084921987224039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52642564fb8767%3A0xdfb45e82d800e951!2sTespa%20Tools%20Private%20Limited!5e0!3m2!1sen!2sin!4v1750242061533!5m2!1sen!2sin',
-      address: 'TESPA CALIBRATION CENTRE\nD - 105, 1st Main Road, D Block, Anna Nagar East\nChennai - 600 102',
-      phone: '+91 44 26632191, +91 9445008731, +91 9445282765',
+      address: 'TESPA TOOLS PRIVATE LIMITED \nD - 105, 1st Main Road, D Block, Anna Nagar East\nChennai - 600 102',
+      phone: '+91 44 26632191, +91 94451 94592, +91 94452 82765',
       email: 'sales@tespaindia.com'
     },
     {
       name: 'Coimbatore',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.7680961166952!2d76.97248113181531!3d11.016889516290794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859e895d5f0e9%3A0x4d53bca064097ff7!2sDr.%20Rajalakshmi%20No%3A6%2C%20New%20sidhapudur%2C%20coimbatore!5e0!3m2!1sen!2sin!4v1750242120028!5m2!1sen!2sin',
-      address: 'TESPA CALIBRATION CENTRE\nA-3, Rajalakshmi Annexe, N.G.Narayanswamy Street\nNew Siddha Pudur, Coimbatore - 641 044',
+      address: 'TESPA TOOLS PRIVATE LIMITED \nA-3, Rajalakshmi Annexe, N.G.Narayanswamy Street\nNew Siddha Pudur, Coimbatore - 641 044',
       phone: '0422 - 4388832',
       email: 'coimbatore@tespaindia.com'
     },
     {
       name: 'Bangalore',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15562.368480442676!2d77.68225884231752!3d12.804966682259192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6de210b86939%3A0x3b7365545df108dc!2sTespa%20calibration%20services!5e0!3m2!1sen!2sin!4v1750242283213!5m2!1sen!2sin',
-      address: 'TESPA CALIBRATION CENTRE\nNo. 944, Opp. Hennagara Cross, Hosur Main Road\nChandapura, Anekal Taluk, Bangalore - 560 099',
+      address: 'TESPA TOOLS PRIVATE LIMITED \nNo. 944, Opp. Hennagara Cross, Hosur Main Road\nChandapura, Anekal Taluk, Bangalore - 560 099',
       phone: '080 3271 2878, 4150 7293',
       email: 'bangalore@tespaindia.com'
     },
     {
       name: 'Pune',
       mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7740049.930841319!2d64.58348047499999!3d18.694430100000016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b700025f8863%3A0xa0589f296bccd18!2sMisty%20Woods!5e0!3m2!1sen!2sin!4v1750242507302!5m2!1sen!2sin',
-      address: 'TESPA CALIBRATION CENTRE\nFlat No. 101, 1st Floor, Misty Woods Building\nPatil Nagar & Chinchwad - 411062',
+      address: 'TESPA TOOLS PRIVATE LIMITED \nFlat No. 101, 1st Floor, Misty Woods Building\nPatil Nagar & Chinchwad - 411062',
       phone: '+91 93720 72215',
       email: 'pune@tespaindia.com'
     }
@@ -196,7 +196,7 @@ const Contact = () => {
                     <div className="flex items-start">
                       <MapPin className="text-[#27a3d4] mr-3 h-5 w-5 mt-1" />
                       <div>
-                        <h3 className="font-semibold text-gray-800">Headquarters</h3>
+                        <h3 className="font-semibold text-gray-800">TESPA TOOLS PRIVATE LIMITED</h3>
                         <p className="text-gray-600 whitespace-pre-line">{locations[0].address}</p>
                       </div>
                     </div>
