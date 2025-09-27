@@ -175,7 +175,7 @@ const Products = () => {
     { label: 'Inprocess Gauging', value: 'Inprocess Gauging' },
     { label: 'Sylvac', value: 'Sylvac' },
     { label: 'Mahr', value: 'Mahr' },
-    { label: 'Scantech 3D', value: 'SCANTECH 3D' }
+    { label: 'SCANOLOGY', value: 'SCANOLOGY' }
   ];
 
   const handleCompanyChange = (company: string) => {

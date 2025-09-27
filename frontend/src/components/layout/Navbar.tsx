@@ -12,7 +12,7 @@ const companies = [
   'Inprocess Gauging',
   'Sylvac',
   'Mahr',
-  'Scantech 3D'
+  'SCANOLOGY'
 ];
 
 const Navbar = () => {
@@ -83,7 +83,7 @@ const Navbar = () => {
         { name: 'Inprocess Gauging', href: '/products?company=Inprocess Gauging', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/e_background_removal/f_png/v1740752141/tespa_logo_fvfey9.jpg', description: 'Tespa Inprocess gauges' },
         { name: 'Sylvac Products', href: '/products?company=Sylvac', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707087/logo-sylvac-metrology-hd_bmtjbl.png', description: 'Digital measuring instruments' },
         { name: 'Mahr Products', href: '/products?company=Mahr', icon: 'https://res.cloudinary.com/dryhpaq1t/image/upload/v1741707108/logo-mahr_ymbv9o.svg', description: 'High-precision metrology solutions' },
-        { name: 'Scantech 3D Products', href: '/products?company=SCANTECH 3D', icon: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750227673/64b8eeb682905d8754062b5be955e4a6_dnlutf.webp', description: 'Highly precise Scantech 3D scanners' }
+        { name: 'SCANOLOGY Products', href: '/products?company=SCANOLOGY', icon: 'https://res.cloudinary.com/dyj3rywju/image/upload/v1750227673/64b8eeb682905d8754062b5be955e4a6_dnlutf.webp', description: 'Highly precise SCANOLOGY scanners' }
       ],
       isDropdown: true,
       id: 'products'

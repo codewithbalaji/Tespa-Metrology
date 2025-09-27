@@ -16,7 +16,7 @@ const companies = [
   'Inprocess Gauging',
   'Sylvac',
   'Mahr',
-  'SCANTECH 3D'
+  'SCANOLOGY'
 ]
 
 const categories = [
