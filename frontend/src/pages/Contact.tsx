@@ -7,8 +7,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { ChevronRight, Mail, Phone, MapPin, Send, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { cn } from '@/lib/utils';
+import { ShopContext } from '@/context/ShopContext';
+import axios from 'axios';
+import { toast as reactToast } from 'react-toastify';
 
 interface LocationData {
   name: string;
@@ -22,7 +25,17 @@ const publicUrl = import.meta.env.VITE_PUBLIC_URL
 
 const Contact = () => {
   const { toast } = useToast();
+  const { backendUrl } = useContext(ShopContext);
   const [activeLocation, setActiveLocation] = useState('Chennai');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    product: '',
+    name: '',
+    email: '',
+    mobile: '',
+    enquiry: '',
+    requirement: ''
+  });
 
   const locations: LocationData[] = [
     {
@@ -55,13 +68,50 @@ const Contact = () => {
     }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Enquiry Submitted",
-      description: "Thank you for contacting us. We'll get back to you shortly.",
-      duration: 5000,
-    });
+    
+    // Validate required fields
+    if (!formData.product || !formData.name || !formData.email || !formData.mobile || !formData.enquiry) {
+      reactToast.error('Please fill in all required fields');
+      return;
+    }
+    
+    try {
+      setIsSubmitting(true);
+      
+      const response = await axios.post(`${backendUrl}/api/contact/submit`, formData);
+      
+      if (response.data.success) {
+        reactToast.success('Thank you for contacting us. We\'ll get back to you shortly.');
+        toast({
+          title: "Enquiry Submitted",
+          description: "Thank you for contacting us. We'll get back to you shortly.",
+          duration: 5000,
+        });
+        // Reset form
+        setFormData({
+          product: '',
+          name: '',
+          email: '',
+          mobile: '',
+          enquiry: '',
+          requirement: ''
+        });
+      } else {
+        reactToast.error(response.data.message || 'Failed to submit enquiry');
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      reactToast.error('Something went wrong. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const activeLocationData = locations.find(loc => loc.name === activeLocation);
@@ -108,28 +158,53 @@ const Contact = () => {
                       <label htmlFor="product" className="block mb-2 text-sm font-medium text-gray-700">
                         Product / Service Looking for *
                       </label>
-                      <Input id="product" placeholder="What are you interested in?" required />
+                      <Input 
+                        id="product" 
+                        placeholder="What are you interested in?" 
+                        value={formData.product}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     
                     <div>
                       <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">
                         Your Name *
                       </label>
-                      <Input id="name" placeholder="Enter your full name" required />
+                      <Input 
+                        id="name" 
+                        placeholder="Enter your full name" 
+                        value={formData.name}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     
                     <div>
                       <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
                         Email *
                       </label>
-                      <Input id="email" type="email" placeholder="Enter your email address" required />
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        placeholder="Enter your email address" 
+                        value={formData.email}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     
                     <div>
                       <label htmlFor="mobile" className="block mb-2 text-sm font-medium text-gray-700">
                         Mobile *
                       </label>
-                      <Input id="mobile" placeholder="Enter your mobile number" required />
+                      <Input 
+                        id="mobile" 
+                        placeholder="Enter your mobile number" 
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        required 
+                      />
                     </div>
                     
                     <div>
@@ -140,6 +215,8 @@ const Contact = () => {
                         id="enquiry" 
                         placeholder="Enter your enquiry details" 
                         className="min-h-[80px]" 
+                        value={formData.enquiry}
+                        onChange={handleChange}
                         required 
                       />
                     </div>
@@ -152,15 +229,27 @@ const Contact = () => {
                         id="requirement" 
                         placeholder="Describe your specific requirements" 
                         className="min-h-[120px]" 
+                        value={formData.requirement}
+                        onChange={handleChange}
                       />
                     </div>
                     
                     <Button 
                       type="submit" 
                       className="bg-[#27a3d4] hover:bg-[#1d8cb8] text-white w-full flex items-center justify-center"
+                      disabled={isSubmitting}
                     >
-                      <Send className="mr-2 h-4 w-4" />
-                      Send Enquiry
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full mr-2"></div>
+                          <span>Submitting...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Send Enquiry
+                        </>
+                      )}
                     </Button>
                   </form>
                 </div>

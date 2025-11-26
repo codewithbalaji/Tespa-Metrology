@@ -96,8 +96,57 @@ const Index = ({ token }: IndexProps) => {
     return ((data.enquiries.resolved / data.enquiries.total) * 100).toFixed(1);
   };
 
+  const SkeletonCard = () => (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <div className="h-4 w-24 bg-gray-200 rounded animate-pulse"></div>
+        <div className="h-4 w-4 bg-gray-200 rounded animate-pulse"></div>
+      </CardHeader>
+      <CardContent>
+        <div className="h-8 w-20 bg-gray-200 rounded animate-pulse mb-2"></div>
+        <div className="h-3 w-32 bg-gray-200 rounded animate-pulse"></div>
+      </CardContent>
+    </Card>
+  );
+
+  const SkeletonChart = () => (
+    <Card>
+      <CardHeader>
+        <div className="h-6 w-48 bg-gray-200 rounded animate-pulse mb-2"></div>
+        <div className="h-4 w-64 bg-gray-200 rounded animate-pulse"></div>
+      </CardHeader>
+      <CardContent>
+        <div className="h-[350px] bg-gray-100 rounded animate-pulse"></div>
+      </CardContent>
+    </Card>
+  );
+
   if (loading) {
-    return <div>Loading dashboard data...</div>;
+    return (
+      <div className="space-y-8 p-8 max-w-[1600px] mx-auto">
+        <div className="flex items-center justify-between">
+          <div className="h-9 w-64 bg-gray-200 rounded animate-pulse"></div>
+          <div className="h-10 w-32 bg-gray-200 rounded animate-pulse"></div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <SkeletonChart />
+          <SkeletonChart />
+        </div>
+      </div>
+    );
   }
 
   return (

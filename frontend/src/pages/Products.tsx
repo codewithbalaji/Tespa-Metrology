@@ -174,7 +174,7 @@ const Products = () => {
     { label: 'Tespa', value: 'Tespa' },
     { label: 'Inprocess Gauging', value: 'Inprocess Gauging' },
     { label: 'Sylvac', value: 'Sylvac' },
-    { label: 'Mahr', value: 'Mahr' },
+    // { label: 'Mahr', value: 'Mahr' },
     { label: 'SCANOLOGY', value: 'SCANOLOGY' }
   ];
 

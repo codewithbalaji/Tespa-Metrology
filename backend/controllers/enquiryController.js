@@ -1,5 +1,7 @@
 import enquiryModel from '../models/enquiryModel.js';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
+import transporter from '../config/nodemailer.js';
+import { ENQUIRY_EMAIL_TEMPLATE } from '../config/emailTemplates.js';
 
 
   // Submit a new enquiry
@@ -79,6 +81,31 @@ import jwt from 'jsonwebtoken'
 
       // Save the enquiry
       await newEnquiry.save();
+
+      // Send email notification to admin
+      try {
+        const mailOptions = {
+          from: process.env.SENDER_EMAIL,
+          to: process.env.USER_EMAIL,
+          subject: `New Enquiry: ${productName}`,
+          html: ENQUIRY_EMAIL_TEMPLATE({
+            productName,
+            quantity,
+            email,
+            mobileNo,
+            companyName,
+            country,
+            purpose,
+            requirementDetails
+          })
+        };
+
+        await transporter.sendMail(mailOptions);
+        console.log('Enquiry notification email sent successfully');
+      } catch (emailError) {
+        console.error('Error sending enquiry email:', emailError);
+        // Don't fail the request if email fails
+      }
 
       // Send success response
       res.status(201).json({

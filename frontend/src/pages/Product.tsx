@@ -306,14 +306,6 @@ const Product = () => {
                     </div>
                   )}
                 </div>
-
-                {/* Delivery Info */}
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                  <Info size={16} className="text-[#27a3d4]" />
-                  <span>
-                    Delivery Time: {productData.deliveryTime || "3-4 Weeks"}
-                  </span>
-                </div>
               </div>
             </div>
           </div>

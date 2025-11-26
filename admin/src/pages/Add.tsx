@@ -20,7 +20,7 @@ const companies = [
   'Tespa',
   'Inprocess Gauging', 
   'Sylvac', 
-  'Mahr', 
+  // 'Mahr', 
   'SCANOLOGY'
 ];
 
@@ -61,7 +61,7 @@ const Add = ({ token }: AddProps) => {
     defaultValues: {
       name: '',
       description: '',
-      price: '',
+      price: '0',
       category: 'Coordinate Measuring Machine',
       stock: '0',
       model: '',

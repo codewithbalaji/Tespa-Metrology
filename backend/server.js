@@ -12,6 +12,7 @@ import enquiryRouter from './routes/enquiryRoute.js'
 import dashboardRouter from './routes/dashboardRoute.js'
 import applicationRouter from './routes/applicationRoute.js'
 import sitemapRouter from './routes/sitemapRoute.js'
+import contactRouter from './routes/contactRoute.js'
 
 //App config
 const app = express()
@@ -41,6 +42,7 @@ app.use('/api/address', addressRouter)
 app.use('/api/enquiry', enquiryRouter)
 app.use('/api/dashboard', dashboardRouter)
 app.use('/api/careers/applications', applicationRouter)
+app.use('/api/contact', contactRouter)
 app.use('/', sitemapRouter)
 
 app.get('/', (req, res)=>{
