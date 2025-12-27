@@ -9,7 +9,7 @@ import Calibration from "./pages/Calibration";
 import Contact from "./pages/Contact";
 import Clients from "./pages/Clients";
 import Careers from "./pages/Careers";
-import NotFound from "./pages/NotFound";
+
 import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
@@ -51,7 +51,7 @@ const App = () => (
               <Route path="/verify" element={<Verify/>}/>
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<Index />} />
             </Routes>
             <Chatbot />
           </ShopContextProvider>

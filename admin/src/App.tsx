@@ -47,6 +47,7 @@ const App = () => {
             <Route path='/testimonial' element={<Testimonial token={token} />} />
             <Route path='/news' element={<News token={token} />} />
             <Route path='/edit/:id' element={<Edit token={token} />} />
+            <Route path='*' element={<Index token={token} />} />
           </Routes>
         </div>
       </div>
